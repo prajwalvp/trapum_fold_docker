@@ -372,8 +372,8 @@ RUN pip3 install numpy
 RUN pip2 install clfd 
 RUN pip3 install xxhash
 RUN pip3 install --upgrade setuptools
-RUN pip3 install mysqlclient
 RUN pip3 install pika
+RUN pip3 install mysqlclient
 RUN pip3 install pymysql 
 RUN pip3 install sqlalchemy
 RUN pip3 install sqlacodegen
