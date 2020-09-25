@@ -5,10 +5,6 @@
 # as you do not remove the above attribution and reasonably
 # inform receipients that you have modified the original work.
 
-#### Slight variant to incorporate python2 compatibility for PICS (Zhu et al. 2014). PRESTO python tools are installed with python2.7 here
-
-
-
 FROM ubuntu:16.04
 
 MAINTAINER : Prajwal Padmanabh "prajwalvp@mpifr-bonn.mpg.de"
@@ -367,13 +363,6 @@ ENV PRESTO=$PSRHOME"/presto" \
     PATH=$PATH:$PSRHOME"/presto/bin" \
     LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PSRHOME"/presto/lib" \
     PYTHONPATH=$PYTHONPATH:$PSRHOME"/presto/lib/python"
-
-
-# Go to previous commit
-WORKDIR $PRESTO 
-RUN git checkout 280da5ef2198e1a8afcda5c9e83d27accd17412e
-
-
 WORKDIR $PRESTO/src
 #RUN make makewisdom
 RUN make prep && \
@@ -381,7 +370,7 @@ RUN make prep && \
     make 
 #    make mpi
 WORKDIR $PRESTO
-RUN pip2 install .
+RUN pip install .
 ENV PYTHONPATH $PYTHONPATH:/home/psr/software/presto/python/presto
 
 RUN env | awk '{print "export ",$0}' >> $HOME/.profile
