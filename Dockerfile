@@ -401,6 +401,29 @@ ENV PYTHONPATH $PYTHONPATH:$HOME/software/candidate_filter/candidate_filter
 ENV PATH $PATH:$HOME/software/candidate_filter/candidate_filter
 
 
+# Install SOFA
+WORKDIR $HOME/software
+RUN wget https://www.iausofa.org/2020_0721_C/sofa_c-20200721.tar.Z --no-check-certificate && \
+    tar -zxvf sofa_c-20200721.tar.Z
+WORKDIR $HOME/software/sofa/20200721/c/src
+RUN make && make test
+
+
+
+# Install PulsarX
+
+WORKDIR $HOME/software
+RUN apt-get install -y libboost-all-dev
+RUN git clone https://github.com/ypmen/PulsarX.git
+WORKDIR $HOME/software/PulsarX
+RUN ./bootstrap && \
+    ./configure --prefix=`pwd` CXXFLAGS="-std=c++11 -O3" LDFLAGS="-L/home/psr/software/sofa/20200721/c/src"  CPPFLAGS="-I /home/psr/software/sofa/20200721/c/src" && \
+    make -j && \
+    make install
+
+ENV PATH $PATH:$HOME/software/PulsarX/bin
+ENV YMW16_DIR $HOME/software/PulsarX/src/ymw16
+
 
 
 # TRAPUM utilities 
