@@ -73,8 +73,8 @@ RUN apt-get --no-install-recommends -y install \
     libglib2.0-0 \
     libglib2.0-dev \
     openssh-server \
-    xorg \
     openbox \
+    xorg \
     libhdf5-10 \
     libhdf5-cpp-11 \
     libhdf5-dev \
