@@ -391,9 +391,6 @@ RUN env | awk '{print "export ",$0}' >> $HOME/.profile
 WORKDIR $HOME
 RUN git clone https://github.com/zhuww/ubc_AI.git
 
-WORKDIR $HOME/ubc_AI
-
-
 # Install candidate filter and make it executable
 WORKDIR $HOME/software
 RUN git clone https://github.com/prajwalvp/candidate_filter.git
