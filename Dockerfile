@@ -394,7 +394,6 @@ RUN git clone https://github.com/zhuww/ubc_AI.git
 # Install candidate filter and make it executable
 WORKDIR $HOME/software
 RUN git clone https://github.com/prajwalvp/candidate_filter.git
-WORKDIR $HOME/software/candidate_filter/candidate_filter
 ENV PYTHONPATH $PYTHONPATH:$HOME/software/candidate_filter/candidate_filter
 ENV PATH $PATH:$HOME/software/candidate_filter/candidate_filter
 
