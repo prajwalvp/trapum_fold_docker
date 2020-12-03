@@ -384,7 +384,6 @@ RUN make prep && \
 WORKDIR $PRESTO
 RUN pip2 install .
 ENV PYTHONPATH $PYTHONPATH:/home/psr/software/presto/python/presto
-
 RUN env | awk '{print "export ",$0}' >> $HOME/.profile
 
 # PICS 
